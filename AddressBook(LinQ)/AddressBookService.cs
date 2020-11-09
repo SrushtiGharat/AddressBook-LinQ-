@@ -40,6 +40,19 @@ namespace AddressBook_LinQ_
             Console.WriteLine("Contact edited successfully");
         }
 
+        public void GetContactByCityOrState(string cityOrState)
+        {
+            var result = from contact in dataTable.AsEnumerable()
+                         where (contact.Field<string>("City") == cityOrState || contact.Field<string>("State") == cityOrState)
+                         select contact;
+            foreach (var contact in result)
+            {
+                Console.WriteLine(contact.Field<string>("First Name") + "\t" + contact.Field<string>("Last Name") +
+                     "\t" + contact.Field<string>("Address") + "\t" + contact.Field<string>("City") + "\t" + contact.Field<string>("State") +
+                     "\t" + contact.Field<string>("ZipCode") + "\t" + contact.Field<string>("PhoneNo") + "\t" + contact.Field<string>("Email"));
+            }
+        }
+
         public void RemoveContact(string name)
         {
             var result = from contact in dataTable.AsEnumerable()
@@ -51,6 +64,7 @@ namespace AddressBook_LinQ_
             }
              Console.WriteLine("Contact removed successfully");
         }
+
         public void Display()
         {
             foreach(var contact in dataTable.AsEnumerable())

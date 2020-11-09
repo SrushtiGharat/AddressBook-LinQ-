@@ -10,7 +10,7 @@ namespace AddressBook_LinQ_
             AddressBookService addressBook = new AddressBookService();
             addressBook.CreateTable();
 
-            Console.WriteLine("1.Edit Contact\n2.Remove Contact");
+            Console.WriteLine("1.Edit Contact\n2.Remove Contact\n3.Get Contact By City Or State");
             int choice = Convert.ToInt32(Console.ReadLine());
             switch (choice)
             {
@@ -29,7 +29,11 @@ namespace AddressBook_LinQ_
                     addressBook.RemoveContact(nameToDelete);
                     addressBook.Display();
                     break;
-
+                case 3:
+                    Console.WriteLine("Enter city or state");
+                    string cityOrState = Console.ReadLine();
+                    addressBook.GetContactByCityOrState(cityOrState);
+                    break;
                 default:
                     Console.WriteLine("Invalid choice");
                     break;
