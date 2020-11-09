@@ -10,6 +10,10 @@ namespace AddressBook_LinQ_
     class AddressBookService
     {
         DataTable dataTable = new DataTable();
+
+        /// <summary>
+        /// Create a data table for address book and insert values
+        /// </summary>
         public void CreateTable()
         {
             dataTable.Columns.Add("AddressBook Name");
@@ -31,6 +35,11 @@ namespace AddressBook_LinQ_
             Console.WriteLine("Table created successfully");
         }
 
+        /// <summary>
+        /// Edit contact in the address book
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="phoneNo"></param>
         public void EditPhoneNo(string name,string phoneNo)
         {
             var result = from contact in dataTable.AsEnumerable()
@@ -43,6 +52,10 @@ namespace AddressBook_LinQ_
             Console.WriteLine("Contact edited successfully");
         }
 
+        /// <summary>
+        /// Get contacts by city or state
+        /// </summary>
+        /// <param name="cityOrState"></param>
         public void GetContactByCityOrState(string cityOrState)
         {
             var result = from contact in dataTable.AsEnumerable()
@@ -56,6 +69,9 @@ namespace AddressBook_LinQ_
             }
         }
 
+        /// <summary>
+        /// Get address book size by city and state
+        /// </summary>
         public void GetCountByCityAndState()
         {
             var result = from contact in dataTable.AsEnumerable()
@@ -67,6 +83,10 @@ namespace AddressBook_LinQ_
             }
         }
 
+        /// <summary>
+        /// Given city sort by name
+        /// </summary>
+        /// <param name="city"></param>
         public void SortByName(string city)
         {
             var result = from contact in dataTable.AsEnumerable()
@@ -81,6 +101,9 @@ namespace AddressBook_LinQ_
             }
         }
 
+        /// <summary>
+        /// Get size of address book by type
+        /// </summary>
         public void CountByType()
         {
             var result = from contact in dataTable.AsEnumerable()
@@ -91,6 +114,11 @@ namespace AddressBook_LinQ_
                 Console.WriteLine(data.Type + "-----" + data.Count);
             }
         }
+
+        /// <summary>
+        /// Remove a contact from address book
+        /// </summary>
+        /// <param name="name"></param>
         public void RemoveContact(string name)
         {
             var result = from contact in dataTable.AsEnumerable()
@@ -103,6 +131,9 @@ namespace AddressBook_LinQ_
              Console.WriteLine("Contact removed successfully");
         }
 
+        /// <summary>
+        /// Display address book
+        /// </summary>
         public void Display()
         {
             foreach(var contact in dataTable.AsEnumerable())
