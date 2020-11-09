@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace AddressBook_LinQ_
@@ -50,6 +51,17 @@ namespace AddressBook_LinQ_
                 Console.WriteLine(contact.Field<string>("First Name") + "\t" + contact.Field<string>("Last Name") +
                      "\t" + contact.Field<string>("Address") + "\t" + contact.Field<string>("City") + "\t" + contact.Field<string>("State") +
                      "\t" + contact.Field<string>("ZipCode") + "\t" + contact.Field<string>("PhoneNo") + "\t" + contact.Field<string>("Email"));
+            }
+        }
+
+        public void GetCountByCityAndState()
+        {
+            var result = from contact in dataTable.AsEnumerable()
+                         group contact by new { State = contact.Field<string>("State"), City = contact.Field<string>("City") } into grp
+                         select new { State = grp.Key.State, City = grp.Key.City, Count = grp.Count() };
+            foreach(var data in result)
+            {
+                Console.WriteLine(data.State + "-----" + data.City + "-----" + data.Count);
             }
         }
 
