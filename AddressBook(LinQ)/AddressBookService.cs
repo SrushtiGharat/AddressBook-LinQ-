@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Text;
 
 namespace AddressBook_LinQ_
@@ -39,6 +40,17 @@ namespace AddressBook_LinQ_
             Console.WriteLine("Contact edited successfully");
         }
 
+        public void RemoveContact(string name)
+        {
+            var result = from contact in dataTable.AsEnumerable()
+                         where contact.Field<string>("First Name") == name
+                         select contact;
+            foreach (var contact in result.ToList())
+            {
+                contact.Delete();
+            }
+             Console.WriteLine("Contact removed successfully");
+        }
         public void Display()
         {
             foreach(var contact in dataTable.AsEnumerable())
