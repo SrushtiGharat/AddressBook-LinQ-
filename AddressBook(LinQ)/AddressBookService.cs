@@ -61,7 +61,7 @@ namespace AddressBook_LinQ_
                          select new { State = grp.Key.State, City = grp.Key.City, Count = grp.Count() };
             foreach(var data in result)
             {
-                Console.WriteLine(data.State + "-----" + data.City + "-----" + data.Count);
+                Console.WriteLine(data.State + "------" + data.City + "------" + data.Count);
             }
         }
 
