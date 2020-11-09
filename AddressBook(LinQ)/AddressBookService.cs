@@ -65,6 +65,19 @@ namespace AddressBook_LinQ_
             }
         }
 
+        public void SortByName(string city)
+        {
+            var result = from contact in dataTable.AsEnumerable()
+                         where contact.Field<string>("City") == city
+                         orderby contact.Field<string>("First Name"), contact.Field<string>("Last Name")
+                         select contact;
+            foreach (var contact in result)
+            {
+                Console.WriteLine(contact.Field<string>("First Name") + "\t" + contact.Field<string>("Last Name") +
+                     "\t" + contact.Field<string>("Address") + "\t" + contact.Field<string>("City") + "\t" + contact.Field<string>("State") +
+                     "\t" + contact.Field<string>("ZipCode") + "\t" + contact.Field<string>("PhoneNo") + "\t" + contact.Field<string>("Email"));
+            }
+        }
         public void RemoveContact(string name)
         {
             var result = from contact in dataTable.AsEnumerable()
