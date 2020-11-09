@@ -9,7 +9,7 @@ namespace AddressBook_LinQ_
             Console.WriteLine("Welcome to address book using Linq");
             AddressBookService addressBook = new AddressBookService();
             addressBook.CreateTable();
-
+            
             Console.WriteLine("1.Edit Contact\n2.Remove Contact\n3.Get Contact By City Or State\n4.Get count by city and state" +
                 "\n5.Sort by name");
             int choice = Convert.ToInt32(Console.ReadLine());
