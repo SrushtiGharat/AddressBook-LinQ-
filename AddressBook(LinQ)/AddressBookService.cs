@@ -80,6 +80,17 @@ namespace AddressBook_LinQ_
                      "\t" + contact.Field<string>("ZipCode") + "\t" + contact.Field<string>("PhoneNo") + "\t" + contact.Field<string>("Email"));
             }
         }
+
+        public void CountByType()
+        {
+            var result = from contact in dataTable.AsEnumerable()
+                         group contact by contact.Field<string>("Type") into grp
+                         select new { Type = grp.Key, Count = grp.Count() };
+            foreach(var data in result)
+            {
+                Console.WriteLine(data.Type + "-----" + data.Count);
+            }
+        }
         public void RemoveContact(string name)
         {
             var result = from contact in dataTable.AsEnumerable()

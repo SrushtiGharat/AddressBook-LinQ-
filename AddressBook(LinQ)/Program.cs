@@ -11,7 +11,7 @@ namespace AddressBook_LinQ_
             addressBook.CreateTable();
             
             Console.WriteLine("1.Edit Contact\n2.Remove Contact\n3.Get Contact By City Or State\n4.Get count by city and state" +
-                "\n5.Sort by name");
+                "\n5.Sort by name\n6.Get Count By Type");
             int choice = Convert.ToInt32(Console.ReadLine());
             switch (choice)
             {
@@ -42,6 +42,9 @@ namespace AddressBook_LinQ_
                     Console.WriteLine("Enter city");
                     string city = Console.ReadLine();
                     addressBook.SortByName(city);
+                    break;
+                case 6:
+                    addressBook.CountByType();
                     break;
                 default:
                     Console.WriteLine("Invalid choice");
